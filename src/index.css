@@ -1,7 +1,9 @@
 /* src/index.css */
-
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
 body {
-  padding: 16px;
+  padding: 16px, 0;
   display: flex;
   flex-direction: column;
 }
@@ -9,6 +11,11 @@ body {
 #root {
   width: 100%;
   height: 100%;
+  padding-top: 0 !important;
+}
+
+#root > :nth-child(2) {
+  border: 2px solid black;
 }
 
 ul {

@@ -1,3 +1,5 @@
+import './MailboxForm.css'
+
 function MailboxForm( { addMailbox }) {
 
     const handleSubmit = (event) => {
@@ -9,6 +11,10 @@ function MailboxForm( { addMailbox }) {
     }
 
     return (
+        <div>
+
+        <h1>Create a New Mailbox</h1>
+        <hr />
         <form onSubmit={handleSubmit}>
             <label htmlFor="mailbox-name">Mailbox Name:</label>
             <input type="text" id="boxOwner" />
@@ -20,6 +26,8 @@ function MailboxForm( { addMailbox }) {
             </select>
             <button type="submit">Create Mailbox</button>
         </form>
+
+        </div>
     )
 }
 

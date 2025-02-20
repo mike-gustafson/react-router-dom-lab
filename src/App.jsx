@@ -2,6 +2,7 @@ import NavBar from "./components/NavBar/NavBar";
 import MailboxForm from "./components/MailboxForm/MailboxForm";
 import MailboxList from "./components/MailboxList/MailboxList";
 import MailboxDetails from "./components/MailboxDetails/MailboxDetails";
+import MailboxNotFound from "./components/MailboxNotFound/MailboxNotFound";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import './App.css';
@@ -31,6 +32,10 @@ function App() {
   
   const handleMailboxClick = (id) => {
     const selectedMailbox = mailboxes.find(mailbox => mailbox._id === id);
+    if (!selectedMailbox) {
+      navigate('/mailboxes/not-found');
+      return;
+    }
     setMailbox(selectedMailbox);
     navigate(`/mailboxes/${id}`);
   }
@@ -39,9 +44,10 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<h1>Welcome to the Post Office</h1>} />
+        <Route path="/" element={<div><h1>Welcome to the Post Office</h1></div>} />
         <Route path="/mailboxes" element={<MailboxList mailboxes={mailboxes} handleMailboxClick={handleMailboxClick}/>} />
         <Route path="/new-mailbox" element={<MailboxForm addMailbox={addMailbox} />} />
+        <Route path="/mailboxes/not-found" element={<MailboxNotFound />} />
         <Route path="/mailboxes/:id" element={<MailboxDetails mailbox={mailbox} />} />
       </Routes>
     </>
